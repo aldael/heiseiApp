@@ -13,7 +13,7 @@ class dataRiders {
 
 
     suspend fun getRiders(rider: String, identidad: String, context: Context) : ArrayList<Rider> {
-        var rLocal = AppDatabase
+        var rLocal = AppDatabase.getInstance
 
         val api = Retrofit.Builder()
            .baseUrl(_BASE_URL)
