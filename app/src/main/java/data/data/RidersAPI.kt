@@ -1,4 +1,4 @@
-package data.local
+package data.data
 
 import retrofit2.Call
 import com.example.protorider0.Rider
