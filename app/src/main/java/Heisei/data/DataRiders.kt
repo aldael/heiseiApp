@@ -1,9 +1,11 @@
-package data.data
+package Heisei.data
 
 import android.content.Context
-import com.example.protorider0.Rider
+import Heisei.model.Rider
 import kotlinx.coroutines.delay
-import local.AppDatabase
+import Heisei.data.local.AppDatabase
+import Heisei.data.local.toLocal
+import Heisei.data.local.toExternal
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -25,12 +27,11 @@ class dataRiders {
 
        delay(3000)
        var result = api.getRiders(rider, identidad).execute()
-
        return if (result.isSuccessful) {
            var rList = result.body() ?: ArrayList<Rider>()
            if (rList.size > 0) {
                var rListLocal = rList.toLocal().toTypedArray()
-               AppDatabase.getInstance(context).ridersDao().insert(rListLocal)
+               AppDatabase.getInstance(context).ridersDao().insert(*rListLocal)
            }
 
            rList
@@ -39,3 +40,4 @@ class dataRiders {
        }
     }
 }
+

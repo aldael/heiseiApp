@@ -1,8 +1,7 @@
-package com.example.protorider0
+package Heisei.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.protorider0.databinding.ActivityMainBinding
 
