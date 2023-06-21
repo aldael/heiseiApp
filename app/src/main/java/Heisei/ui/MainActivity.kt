@@ -1,34 +1,61 @@
 package Heisei.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.protorider0.R
 import com.example.protorider0.databinding.ActivityMainBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var viewModel: MainViewModel
+    private lateinit var rvRiders: RecyclerView
+    private lateinit var adapter: Adapter
+    private lateinit var firebaseAuth: FirebaseAuth
+    private val progressDialog by lazy { CustomProgressDialog(this) }
 
-    private lateinit var binding: ActivityMainBinding
-
-    val riders = listOf(
-        Rider("Tycoon", "Sakurai Keiwa"),
-        Rider("Ichigo", "Takeshi Hongo"),
-        Rider("Decade", "Tsukasa Kadoya"),
-        Rider("Diend", "Daiki Kaito"),
-        Rider("Naago", "Kurama Neon")
-    )
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        initRecycler()
+        setContentView(R.layout.activity_main)
+        firebaseAuth = FirebaseAuth.getInstance()
+        checkUser()
+        bindView()
+        bindViewModel()
     }
 
-    fun initRecycler(){
-        binding.rvRider.layoutManager = LinearLayoutManager(this)
-        val adapter = Adapter(riders)
-        binding.rvRider.adapter = adapter
+    override fun onStart() {
+        super.onStart()
+        progressDialog.start("Henshin...")
+        viewModel.onStart(this)
+    }
+
+    private fun bindView() {
+        rvRiders = findViewById(R.id.rvRider)
+        rvRiders.layoutManager = LinearLayoutManager(this)
+        adapter = Adapter()
+        rvRiders.adapter = adapter
+    }
+
+    private fun bindViewModel() {
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        viewModel.riders.observe(this) {
+            adapter.Update(it)
+            progressDialog.stop()
+        }
+    }
+
+    private fun checkUser() {
+        val firebaseUser = firebaseAuth.currentUser
+        if (firebaseUser == null) {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
     }
 }

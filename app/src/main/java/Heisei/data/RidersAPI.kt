@@ -8,7 +8,10 @@ import retrofit2.http.Query
 interface RidersAPI {
     @GET("/search")
     fun getRiders(
-        @Query("rider") rider: String,
-        @Query("identidad") identidad: String
+        rider: String,
+        identidad: String,
+        armor: String,
+        fav: Boolean,
+        serie: String
         ) : Call<ArrayList<Rider>>
 }

@@ -21,13 +21,11 @@ class MainViewModel : ViewModel() {
     private val ridersRepo = RidersRepository()
 
     var riders = MutableLiveData<ArrayList<Rider>>()
-    var rider = "Tycoon"
-    var identidad = "Sakurai Keiwa"
 
     fun onStart(context: Context) {
         scope.launch {
             kotlin.runCatching {
-                ridersRepo.getRiders(rider, identidad, context)
+                ridersRepo.getRiders(context)
             }.onSuccess {
                 Log.d(_TAG, "Riders onSuccess")
                 riders.postValue(it)
