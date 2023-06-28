@@ -1,4 +1,4 @@
-package Heisei.ui
+package protorider0.ui
 
 import android.view.View
 import android.widget.TextView

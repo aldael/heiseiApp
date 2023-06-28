@@ -1,15 +1,15 @@
-package Heisei.ui
+package protorider0.ui
 
 
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import Heisei.data.RidersRepository
+import protorider0.data.RidersRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.newSingleThreadContext
-import Heisei.model.Rider
+import protorider0.model.Rider
 import kotlin.coroutines.CoroutineContext
 
 class MainViewModel : ViewModel() {

@@ -1,4 +1,4 @@
-package Heisei.ui
+package protorider0.ui
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.protorider0.R
 import com.example.protorider0.databinding.RiderCardBinding
-import Heisei.model.Rider
+import protorider0.model.Rider
 
 
 class Adapter: RecyclerView.Adapter<ViewHolder>(){

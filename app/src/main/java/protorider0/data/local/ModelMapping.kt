@@ -1,6 +1,6 @@
-package Heisei.data.local
+package protorider0.data.local
 
-import Heisei.model.Rider
+import protorider0.model.Rider
 
 fun Rider.toLocal() = RiderLocal(
     rider = rider,

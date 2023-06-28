@@ -1,4 +1,4 @@
-package Heisei.model
+package protorider0.model
 
 import com.google.gson.annotations.SerializedName
 

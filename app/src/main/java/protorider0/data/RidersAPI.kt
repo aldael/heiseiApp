@@ -1,6 +1,6 @@
-package Heisei.data
+package protorider0.data
 
-import Heisei.model.Rider
+import protorider0.model.Rider
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

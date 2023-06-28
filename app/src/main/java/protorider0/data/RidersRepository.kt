@@ -1,7 +1,7 @@
-package Heisei.data
+package protorider0.data
 
 import android.content.Context
-import Heisei.model.Rider
+import protorider0.model.Rider
 
 class RidersRepository {
     private val ridersDS = dataRiders()

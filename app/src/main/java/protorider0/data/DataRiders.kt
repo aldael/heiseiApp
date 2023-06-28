@@ -1,11 +1,11 @@
-package Heisei.data
+package protorider0.data
 
 import android.content.Context
-import Heisei.model.Rider
+import protorider0.model.Rider
 import kotlinx.coroutines.delay
-import Heisei.data.local.AppDatabase
-import Heisei.data.local.toLocal
-import Heisei.data.local.toExternal
+import protorider0.data.local.AppDatabase
+import protorider0.data.local.toLocal
+import protorider0.data.local.toExternal
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

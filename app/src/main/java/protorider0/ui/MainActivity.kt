@@ -1,4 +1,4 @@
-package Heisei.ui
+package protorider0.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

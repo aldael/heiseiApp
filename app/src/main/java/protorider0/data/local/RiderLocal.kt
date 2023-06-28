@@ -1,4 +1,4 @@
-package Heisei.data.local
+package protorider0.data.local
 
 import android.text.BoringLayout
 import androidx.room.Entity
