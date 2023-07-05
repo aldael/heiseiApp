@@ -1,9 +1,10 @@
-package protorider0.ui
+package com.example.protorider0.ui
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.protorider0.R
@@ -17,7 +18,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 import java.lang.Exception
 
 class LoginActivity : AppCompatActivity() {
-    private lateinit var loginButton: Button
+    private lateinit var loginButton: ImageButton
     private lateinit var googleSignCliente: GoogleSignInClient
     private lateinit var firebaseAuth: FirebaseAuth
 
@@ -36,6 +37,7 @@ class LoginActivity : AppCompatActivity() {
         loginButton.setOnClickListener{
             val intent = googleSignCliente.signInIntent
             startActivityForResult(intent, 100)
+
         }
     }
 
@@ -47,6 +49,7 @@ class LoginActivity : AppCompatActivity() {
             try {
                 val account = accountTask.getResult(ApiException::class.java)
                 firebaseAuthWithGoogleAccount(account)
+
             }
             catch (e: Exception) {
                 Log.d("DEMO", "onActivityResult: ${e.message}")

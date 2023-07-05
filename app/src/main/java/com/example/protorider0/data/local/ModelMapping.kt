@@ -1,6 +1,6 @@
-package protorider0.data.local
+package com.example.protorider0.data.local
 
-import protorider0.model.Rider
+import com.example.protorider0.model.Rider
 
 fun Rider.toLocal() = RiderLocal(
     rider = rider,

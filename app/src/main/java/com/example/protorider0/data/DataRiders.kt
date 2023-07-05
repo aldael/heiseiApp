@@ -1,19 +1,19 @@
-package protorider0.data
+package com.example.protorider0.data
 
 import android.content.Context
-import protorider0.model.Rider
+import com.example.protorider0.model.Rider
 import kotlinx.coroutines.delay
-import protorider0.data.local.AppDatabase
-import protorider0.data.local.toLocal
-import protorider0.data.local.toExternal
+import com.example.protorider0.data.local.AppDatabase
+import com.example.protorider0.data.local.toLocal
+import com.example.protorider0.data.local.toExternal
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class dataRiders {
-    private val _BASE_URL = "https://run.mocky.io/v3/a908df41-49b5-428b-a73d-8a3a4dac2d2c"
+class DataRiders {
+    private val _BASE_URL = "https://run.mocky.io/v3/c54dea56-aa61-4e64-9211-722ca49aed25"
 
 
-    suspend fun getRiders(context: Context) : ArrayList<Rider> {
+    suspend fun getRiders(rider: String, context: Context) : ArrayList<Rider> {
         var rLocal = AppDatabase.getInstance(context).ridersDao().getAll()
         if (rLocal.size > 0) {
             return rLocal.toExternal() as ArrayList<Rider>
@@ -24,9 +24,7 @@ class dataRiders {
            .baseUrl(_BASE_URL)
            .addConverterFactory(GsonConverterFactory.create())
            .build().create(RidersAPI::class.java)
-
-       delay(3000)
-       var result = api.getRiders().execute()
+       var result = api.getRiders(rider).execute()
        return if (result.isSuccessful) {
            var rList = result.body() ?: ArrayList<Rider>()
            if (rList.size > 0) {

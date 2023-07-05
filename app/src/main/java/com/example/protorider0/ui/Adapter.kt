@@ -1,12 +1,11 @@
-package protorider0.ui
+package com.example.protorider0.ui
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.protorider0.R
-import com.example.protorider0.databinding.RiderCardBinding
-import protorider0.model.Rider
+import com.example.protorider0.model.Rider
 
 
 class Adapter: RecyclerView.Adapter<ViewHolder>(){
@@ -31,13 +30,17 @@ class Adapter: RecyclerView.Adapter<ViewHolder>(){
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.rider.text = riders[position].rider
-        holder.identidad.text = riders[position].identidad
-        /*
+
         Glide.with(holder.itemView.context)
-            .load(riders[position].imgUrl)
-            .placeholder(R.drawable.Rider_show)
-            .into(holder.img)
-        */
+            .load(riders[position].armor)
+            .placeholder(R.drawable.rider_pose)
+            .into(holder.armor)
+
+        Glide.with(holder.itemView.context)
+            .load(riders[position].serie)
+            .placeholder(R.drawable._0th_kr_mylogo)
+            .into(holder.serie)
+
     }
 
     fun Update(lista : MutableList<Rider>){

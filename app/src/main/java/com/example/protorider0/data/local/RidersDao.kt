@@ -1,4 +1,4 @@
-package protorider0.data.local
+package com.example.protorider0.data.local
 
 import androidx.room.*
 

@@ -1,6 +1,4 @@
-package protorider0.model
-
-import com.google.gson.annotations.SerializedName
+package com.example.protorider0.model
 
 data class Rider(
     val rider: String,

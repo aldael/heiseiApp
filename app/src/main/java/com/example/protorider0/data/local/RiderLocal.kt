@@ -1,6 +1,5 @@
-package protorider0.data.local
+package com.example.protorider0.data.local
 
-import android.text.BoringLayout
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 

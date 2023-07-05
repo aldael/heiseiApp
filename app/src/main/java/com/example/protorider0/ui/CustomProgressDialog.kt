@@ -1,4 +1,4 @@
-package protorider0.ui
+package com.example.protorider0.ui
 
 import android.app.Activity
 import android.app.Dialog
@@ -9,6 +9,7 @@ import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
 import android.os.Build
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.cardview.widget.CardView
@@ -20,7 +21,7 @@ class CustomProgressDialog(context: Context) {
     private var dialog: CustomDialog
     private var cpTitle: TextView
     private var cpCardView: CardView
-    private var progressBar: ProgressBar
+    private var pose: ImageView
 
     fun start(title: String = "") {
         cpTitle.text = title
@@ -37,14 +38,10 @@ class CustomProgressDialog(context: Context) {
 
         cpTitle = view.findViewById(R.id.cp_title)
         cpCardView = view.findViewById(R.id.cp_cadrview)
-        progressBar = view.findViewById(R.id.cp_pbar)
+        pose = view.findViewById(R.id.rider_loading)
 
         cpCardView.setCardBackgroundColor(Color.parseColor("#70000000"))
 
-        setColorFilter(
-            progressBar.indeterminateDrawable,
-            ResourcesCompat.getColor(context.resources, R.color.reedo, null)
-        )
 
         cpTitle.setTextColor(Color.WHITE)
 
