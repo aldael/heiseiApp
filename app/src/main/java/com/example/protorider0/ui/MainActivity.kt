@@ -10,9 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.protorider0.R
 import com.example.protorider0.model.Rider
+import com.example.protorider0.ui.extras.OnItemClickListener
 import com.google.firebase.auth.FirebaseAuth
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnItemClickListener {
     private lateinit var viewModel: MainViewModel
     private lateinit var rvRiders: RecyclerView
     private lateinit var adapter: Adapter
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         firebaseAuth = FirebaseAuth.getInstance()
-        checkUser()
+        // checkUser()
         bindView()
         bindViewModel()
 
@@ -37,10 +38,18 @@ class MainActivity : AppCompatActivity() {
         // viewModel.onStart(rider, this)
     }
 
+
+    override fun onItemClick(rider: Rider) {
+        val intent = Intent(this, CartaRider::class.java )
+        intent.putExtra("id",rider.id)
+        startActivity(intent)
+        Log.d("DEMO", "listener on")
+    }
+
     private fun bindView() {
         rvRiders = findViewById(R.id.rvRider)
         rvRiders.layoutManager = LinearLayoutManager(this)
-        adapter = Adapter()
+        adapter = Adapter(this)
         rvRiders.adapter = adapter
     }
 
@@ -51,6 +60,7 @@ class MainActivity : AppCompatActivity() {
             progressDialog.stop()
         }
     }
+
 
     private fun checkUser() {
         val firebaseUser = firebaseAuth.currentUser

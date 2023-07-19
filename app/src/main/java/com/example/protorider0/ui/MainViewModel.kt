@@ -21,8 +21,8 @@ class MainViewModel : ViewModel() {
     private val ridersRepo = RidersRepository()
 
     var riders = MutableLiveData<ArrayList<Rider>>()
-
-    fun onStart(rider: String, context: Context) {
+    var rider = "Kuuga"
+    fun onStart(context: Context) {
         scope.launch {
             kotlin.runCatching {
                 ridersRepo.getRiders(rider, context)

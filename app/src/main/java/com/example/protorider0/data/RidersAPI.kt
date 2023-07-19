@@ -5,8 +5,12 @@ import retrofit2.Call
 import retrofit2.http.GET
 
 interface RidersAPI {
-    @GET("/getAll")
+    @GET("getAll")
     fun getRiders(
-        rider: String
         ) : Call<ArrayList<Rider>>
+
+    @GET("{id}")
+    fun getRider(
+        id: Int
+    ) : Call<Rider>
 }
